@@ -10,6 +10,34 @@
                 <source>article_create_title</source>
                 <target>Soumettre</target>
             </trans-unit>
+            <trans-unit id="article_liste_title">
+                <source>article_liste_title</source>
+                <target>Liste des articles</target>
+            </trans-unit>
+            <trans-unit id="home_button">
+                <source>home_button</source>
+                <target>Retour à la liste</target>
+            </trans-unit>
+            <trans-unit id="author_label">
+                <source>author_label</source>
+                <target>Par %author_name%</target>
+            </trans-unit>
+            <trans-unit id="date_label">
+                <source>date_label</source>
+                <target>le %date_created%</target>
+            </trans-unit>
+            <trans-unit id="create_article">
+                <source>create_article</source>
+                <target>Ajouter un article</target>
+            </trans-unit>
+            <trans-unit id="article_detail_button">
+                <source>article_detail_button</source>
+                <target>Lire la suite</target>
+            </trans-unit>
+            <trans-unit id="no_articles">
+                <source>no_articles</source>
+                <target>Aucun articles</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

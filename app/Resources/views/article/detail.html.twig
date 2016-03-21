@@ -2,14 +2,16 @@
 
 {% block body %}
 <h1>{{ article.title }}</h1>
-<div>par {{ article.createdBy }}</div>
-<div>le {{ article.createdAt|date('d/m/Y') }}</div>
+{% if article.createdBy is not empty %}
+    <div>{{ 'author_label'|trans({ '%author_name%': article.createdBy}) }}</div>
+{% endif %}
+<div>{{ 'date_label'|trans({ '%date_created%': article.createdAt|date('d/m/Y')}) }}</div>
 
 <div>{{ article.leadingText }}</div>
 <div>{{ article.body }}</div>
 <ul>
     <li>
-        <a href="{{ path('article_liste') }}">Retour à la liste</a>
+        <a href="{{ path('article_liste') }}">{{ 'home_button'|trans }}</a>
     </li>
     <li>
         {{ form_start(delete_form) }}

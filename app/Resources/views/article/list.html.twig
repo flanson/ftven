@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste des articles</h1>
+    <h1>{{ 'article_liste_title'|trans }}</h1>
 
-    <a href="{{ path('article_create') }}">Ajouter un article</a>
+    <a href="{{ path('article_create') }}">{{ 'create_article'|trans }}</a>
 
-{% if articleList is not empty %}
-    <ul>
-        {% for article in articleList %}
-            <div>{{ article.title }}[par {{ article.createdBy }} le {{ article.createdAt|date('d/m/Y') }}]</div>
-            <div>{{ article.leadingText }}</div>
-            <div>{{ article.id }}</div>
-            <div><a href="{{ path('article_detail', { 'slug' : article.slug }) }}">Lire la suite</a></div>
-        {% endfor %}
-    </ul>
-{% else %}
-    <div>Aucun article</div>
-{% endif %}
+    {% if articleList is not empty %}
+        <ul>
+            {% for article in articleList %}
+                <div>{{ article.title }}</div>
+                <div>{% spaceless %}
+                [
+                {% if article.createdBy is not empty %}
+                    <span>{{ 'author_label'|trans({ '%author_name%': article.createdBy}) }}, </span>
+                {% endif %}
+                <span>{{ 'date_label'|trans({ '%date_created%': article.createdAt|date('d/m/Y')}) }}</span>
+                ]
+                {% endspaceless %}</div>
+                <div>{{ article.leadingText }}</div>
+                <div><a href="{{ path('article_detail', { 'slug' : article.slug }) }}">{{ 'article_detail_button'|trans }}</a></div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div>{{ 'no_articles'|trans }}</div>
+    {% endif %}
+
 {% endblock %}

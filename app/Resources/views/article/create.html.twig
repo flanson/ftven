@@ -6,7 +6,7 @@
         {{ form_start(form, { 'action': path('article_create'), 'attr': { 'method' : 'POST', 'class': 'article_new_form' } }) }}
         {{ form_widget(form) }}
         <div>
-            <a href="{{ path('article_liste') }}">Retour à la liste</a>
+            <a href="{{ path('article_liste') }}">{{ 'home_button'|trans }}</a>
         </div>
         <div>
             <input type="submit" value="{{ 'article_create_submit'|trans }}" />
