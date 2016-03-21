@@ -1,0 +1,7 @@
+services:
+
+    article.handler:
+        class: FtvenBundle\Handler\ArticleHandler
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@form.factory"

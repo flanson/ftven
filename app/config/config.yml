@@ -10,13 +10,14 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+#    csrf_protection: ~
+    csrf_protection: false #need to disable csrf token otherwise the json post would not work without token
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
@@ -31,6 +32,9 @@ framework:
     fragments:       ~
     http_method_override: true
     assets: ~
+    serializer:
+        enabled: true
+
 
 # Twig Configuration
 twig:
@@ -40,12 +44,12 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
+        driver:   pdo_pgsql
+        host:     "%database.host%"
+        port:     "%database.port%"
+        dbname:   "%database.name%"
+        user:     "%database.user%"
+        password: "%database.password%"
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -59,10 +63,24 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+# Doctrine Extension Configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+            sluggable:   true
+
+# Doctrine Migration Configuration
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: FtvenBundle\Migrations
+    table_name: migration_versions
+    name: FtvenBundle Migrations
+
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
+    transport: "%mailer.transport%"
+    host:      "%mailer.host%"
+    username:  "%mailer.user%"
+    password:  "%mailer.password%"
     spool:     { type: memory }

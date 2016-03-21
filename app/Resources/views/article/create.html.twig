@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'article_create_title'|trans }}</h1>
+    {%  if (form is not null) %}
+        {{ form_start(form, { 'action': path('article_create'), 'attr': { 'method' : 'POST', 'class': 'article_new_form' } }) }}
+        {{ form_widget(form) }}
+        <div>
+            <a href="{{ path('article_liste') }}">Retour à la liste</a>
+        </div>
+        <div>
+            <input type="submit" value="{{ 'article_create_submit'|trans }}" />
+        </div>
+        {{ form_end(form) }}
+    {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des articles</h1>
+
+    <a href="{{ path('article_create') }}">Ajouter un article</a>
+
+{% if articleList is not empty %}
+    <ul>
+        {% for article in articleList %}
+            <div>{{ article.title }}[par {{ article.createdBy }} le {{ article.createdAt|date('d/m/Y') }}]</div>
+            <div>{{ article.leadingText }}</div>
+            <div>{{ article.id }}</div>
+            <div><a href="{{ path('article_detail', { 'slug' : article.slug }) }}">Lire la suite</a></div>
+        {% endfor %}
+    </ul>
+{% else %}
+    <div>Aucun article</div>
+{% endif %}
+{% endblock %}
