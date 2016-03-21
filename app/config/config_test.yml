@@ -14,3 +14,6 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+# app/config/config_test.yml
+liip_functional_test: ~

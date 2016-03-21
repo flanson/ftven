@@ -56,7 +56,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/creer", name="article_create")
+     * @Route("/creer", name="article_create_post")
      * @Method("POST")
      */
     public function createArticlePostAction(Request $request)

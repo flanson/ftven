@@ -14,7 +14,7 @@
         <a href="{{ path('article_liste') }}">{{ 'home_button'|trans }}</a>
     </li>
     <li>
-        {{ form_start(delete_form) }}
+        {{ form_start(delete_form, { 'attr': { 'method' : 'DELETE', 'class': 'article_new_form' } }) }}
         <input type="submit" value="Delete">
         {{ form_end(delete_form) }}
     </li>

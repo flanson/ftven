@@ -102,7 +102,6 @@ class ArticleRestController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($article);
         $em->flush();
-
         return $this->returnJsonResponse('', 204);
     }
 
